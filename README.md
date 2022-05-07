@@ -5,8 +5,11 @@
 Checkout the Program.cs class
 
 ```csharp
+using System.Globalization;
+using Equibles.Websockets.Client;
+
 // Creates the websocket client
-var client = new EquiblesWebSocketsClient("w", Endpoint.Stocks, new List<string>(){"TSLA"});
+var client = new EquiblesWebSocketsClient("my_apy_key", Endpoint.Stocks, new List<string>(){"TSLA"});
 
 // Register a callback action to be executed when a quote is received
 client.OnQuote(q => {
@@ -29,6 +32,7 @@ await client.Wait();
 // Ticker: AAPL | Volume: 56 | Price: $168.42
 // Ticker: AAPL | Volume: 100 | Price: $168.43
 // Ticker: TSLA | Volume: 33 | Price: $1,075.66
+
 
 ```
 

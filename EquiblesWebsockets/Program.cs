@@ -2,7 +2,7 @@
 using Equibles.Websockets.Client;
 
 // Creates the websocket client
-var client = new EquiblesWebSocketsClient("w", Endpoint.Stocks, new List<string>(){"TSLA"});
+var client = new EquiblesWebSocketsClient("my_apy_key", Endpoint.Stocks, new List<string>(){"TSLA"});
 
 // Register a callback action to be executed when a quote is received
 client.OnQuote(q => {
