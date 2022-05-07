@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <AssemblyName>Equibles.Websockets</AssemblyName>
+        <RootNamespace>Equibles.Websockets</RootNamespace>
+        <PackageId>Equibles.Websockets</PackageId>
+        <Authors>Equibles</Authors>
+        <Company>Equibles</Company>
+        <Product>Equibles Websockets</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.4" />
+      <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="6.0.4" />
+    </ItemGroup>
+
+</Project>
