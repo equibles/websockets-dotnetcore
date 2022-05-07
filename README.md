@@ -5,11 +5,8 @@
 Checkout the Program.cs class
 
 ```csharp
-using System.Globalization;
-using Equibles.Websockets.Client;
-
 // Creates the websocket client
-var client = new EquiblesWebSocketsClient("my-api-key", Endpoint.Cryptos, new List<string>(){"BTC-USD"});
+var client = new EquiblesWebSocketsClient("w", Endpoint.Stocks, new List<string>(){"TSLA"});
 
 // Register a callback action to be executed when a quote is received
 client.OnQuote(q => {
@@ -21,18 +18,17 @@ client.OnQuote(q => {
 // Connect and authenticate
 await client.Connect();
 
-// After 5 seconds I also want to listen to ETH quotes
+// After 5 seconds I also want to listen to Apple quotes
 await Task.Delay(5000);
-client.AddTickers(new []{"ETH-USD"});
+client.AddTickers(new []{"AAPL"});
 
 // Prevents the program from exiting
 await client.Wait();
 
 // Example output from this program:
-// Ticker: BTC-USD | Volume: 0.00404 | Price: $35,807.42
-// Ticker: BTC-USD | Volume: 0.0011 | Price: $35,807.42
-// Ticker: ETH-USD | Volume: 0.0905 | Price: $2,675.66
-
+// Ticker: AAPL | Volume: 56 | Price: $168.42
+// Ticker: AAPL | Volume: 100 | Price: $168.43
+// Ticker: TSLA | Volume: 33 | Price: $1,075.66
 
 ```
 
