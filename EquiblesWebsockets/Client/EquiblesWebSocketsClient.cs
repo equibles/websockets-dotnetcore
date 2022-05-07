@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Equibles.Websockets.Client; 
 
 public class EquiblesWebSocketsClient {
-    private const string Domain = "https://ws.equibles.com";
+    private const string Domain = "https://websockets.equibles.com";
     private readonly string _apiKey;
     private readonly IEnumerable<string> _tickers;
     private readonly HubConnection _connection;
