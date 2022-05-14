@@ -39,4 +39,4 @@ await client.Wait();
 
 ## Author
 [Equibles](https://www.equibles.com)\
-contct@equibles.com
+contact@equibles.com
