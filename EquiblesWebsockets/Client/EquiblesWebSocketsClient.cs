@@ -7,14 +7,14 @@ namespace Equibles.Websockets.Client;
 public class EquiblesWebSocketsClient {
     private const string Domain = "https://websockets.equibles.com";
     private readonly string _apiKey;
-    private readonly IEnumerable<string> _tickers;
+    private readonly List<string> _tickers;
     private readonly HubConnection _connection;
     private readonly List<Action<Quote>> _quoteListeners = new();
     private bool _listenersRegistered = false;
 
     public EquiblesWebSocketsClient(string apiKey, Endpoint endpoint, IEnumerable<string> tickers) {
         _apiKey = apiKey;
-        _tickers = tickers;
+        _tickers = tickers.ToList();
         
         _connection = new HubConnectionBuilder()
             .WithUrl(new Uri($"{Domain}/{endpoint.ToString().ToLower()}"))
@@ -105,11 +105,17 @@ public class EquiblesWebSocketsClient {
     }
 
     public void AddTickers(IEnumerable<string> tickers) {
-        SendAddTickers(tickers);
+        var tickerList = tickers.ToList();
+        _tickers.AddRange(tickerList);
+        SendAddTickers(tickerList);
     }
     
     public void RemoveTickers(IEnumerable<string> tickers) {
-        SendStopTickers(tickers);
+        var tickerList = tickers.ToList();
+        foreach (var tickerToRemove in tickerList) {
+            _tickers.Remove(tickerToRemove);
+        }
+        SendStopTickers(tickerList);
     }
 
     public async Task Disconnect() {
